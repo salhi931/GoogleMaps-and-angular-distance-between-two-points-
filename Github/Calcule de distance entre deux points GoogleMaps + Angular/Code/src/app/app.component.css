@@ -1,0 +1,22 @@
+
+agm-map {
+  height: 400px;
+  width: 580px;
+}
+.mat-card{
+  background-color: #EDEDED;
+}
+.mat-card-header{
+  background-color: #808080;
+}
+
+.mat-card-title{
+  color: #FFFFFF;
+}
+.mat-card-image{
+  height: 400px;
+  width: auto;
+}
+.mat-card-GPS{
+  height: 850px;
+}

@@ -1,0 +1,85 @@
+<form  #f="ngForm" class="container" >
+  <mat-card class="mat-card-GPS" >
+    <mat-card-header>
+      <div mat-card-avatar ></div>
+      <mat-card-title>Calcule de distance entre deux position</mat-card-title>
+    </mat-card-header>
+    <br>
+    <br>
+
+    <div style="display: block" class="container">
+
+
+      <br>
+      <div class="row">
+        <div class="col-md-3"><h2 style="color: black"> Position 1:</h2></div>
+        <div class="col-md-3">
+          <mat-form-field appearance="fill" >
+            <mat-label>Latitude :</mat-label>
+            <input type="text" matInput ngModel name="lat1" [(ngModel)]= "lat1" style="color: black"
+                   required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="fill" >
+            <mat-label  >Langitude :</mat-label>
+            <input type="text"  matInput ngModel name="lng1" style="color: black" [(ngModel)]= "lng1"
+                   required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <button mat-raised-button type="button" style="color: black" [disabled]="Selectionposition1" (click)="SelectPosition1()">selectionner la position 1</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"><h2 style="color: black"> Position 2:</h2></div>
+        <div class="col-md-3">
+          <mat-form-field appearance="fill" >
+            <mat-label style="color: black" >Latitude :</mat-label>
+            <input style="color: black" type="text" matInput ngModel name="lat2" [(ngModel)]= "lat2"
+                   required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="fill" >
+            <mat-label style="color: black">Langitude :</mat-label>
+            <input type="text" style="color: black" matInput ngModel name="lng2" [(ngModel)]= "lng2"
+                   required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <button mat-raised-button type="button" style="color: black" [disabled]="Selectionposition2" (click)="SelectPosition2()">selectionner la position 2</button>
+        </div>
+      </div>
+      <br>
+
+      <div>
+        <div class="col-md-8">
+          <agm-map  [latitude]="33.5402933858387" [longitude]="-7.537258430857849" [zoom]="10" (mapClick)="map($event)"  >
+            <agm-marker   *ngIf="lat1 != undefined && lat1 != null" [latitude]="lat1" [longitude]="lng1" label="position 1"></agm-marker>
+            <agm-marker   *ngIf="lat2 != undefined && lat2 != null" [latitude]="lat2" [longitude]="lng2" label="position 2"></agm-marker>
+          </agm-map>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill" >
+            <mat-label style="color: black">Distance :</mat-label>
+            <input type="text"  style="color: black"disabled matInput ngModel name="dist" [(ngModel)]= "dist" required>
+            <span style="color: black" matSuffix>m</span>
+          </mat-form-field>
+          <mat-form-field appearance="fill" >
+            <mat-label style="color: black">Distance :</mat-label>
+            <input type="text" style="color: black" disabled matInput ngModel name="distKm" [(ngModel)]= "distKm" required>
+            <span style="color: black" matSuffix>km</span>
+          </mat-form-field>
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </mat-card>
+ </form>
+
