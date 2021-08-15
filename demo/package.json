@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@ng-select/ng-select": "^7.2.0"
+  }
+}

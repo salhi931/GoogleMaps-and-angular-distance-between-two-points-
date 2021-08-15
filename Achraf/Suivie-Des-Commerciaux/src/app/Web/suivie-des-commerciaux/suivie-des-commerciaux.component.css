@@ -1,0 +1,12 @@
+agm-map {
+  height: 700px;
+}
+.mat-card{
+  background-color: #FFFFFF;
+}
+.mat-card-header{
+  background-color: #EDEDED;
+ }
+.mat-card-title{
+  color: #A52A2A;
+}

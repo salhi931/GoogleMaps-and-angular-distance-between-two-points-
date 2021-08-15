@@ -1,0 +1,79 @@
+<!--
+<form  #f="ngForm" class="container">
+
+  <div class="col-md-3">
+    <mat-form-field appearance="fill">
+      <mat-label>commercial :</mat-label>
+      <mat-select name="commercial" ngModel
+                  type="text" (selectionChange)="getcommercial(f.value)" >
+        <mat-option  >Toutes les commerciaux</mat-option>
+        <mat-option *ngFor="let commerciaux of suivie.commerciaux let  index = index"
+                    value="{{commerciaux.id_commercial }}">{{index + 1}} &nbsp;&nbsp; {{commerciaux.nomUtilisateur}} </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</form> -->
+
+<div>
+
+  <div class="col-md-10">
+    <mat-card class="mat-card-GPS " >
+      <mat-card-header>
+        <div mat-card-avatar ></div>
+        <mat-card-title>Position GPS des commerciaux</mat-card-title>
+      </mat-card-header>
+      <br>
+      <br>
+
+      <div style="display: block" class="container">
+        <div class="col-md-3" *ngIf="this.suivie.statuss">
+          <button class="mat-button btn-danger" (click)="nggOnDestroy()" >Arreter le suivie</button>
+        </div>
+        <div class="col-md-3" *ngIf="!this.suivie.statuss">
+          <button class="mat-button btn-success" (click)="nggOnDestroy()" >Activer le suivie</button>
+        </div>
+        <br>
+        <br>
+        <div class="container" class="col-md-12">
+          <agm-map [latitude]="suivie.latitude" [longitude]="suivie.longitude" [zoom]="12"  >
+            <span *ngIf="variable">
+              <span *ngFor="let comm of suivie.commerciaux">
+              <agm-marker *ngIf="comm.latcurrent != undefined"
+                           [latitude]="comm.latcurrent" [longitude]="comm.lngcurrent"
+                           [label]="comm.nom"></agm-marker>
+              </span>
+            </span>
+          </agm-map>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+
+    <mat-card class="mat-card-GPS " >
+      <mat-card-header>
+        <div mat-card-avatar ></div>
+        <mat-card-title>Commerciaux: </mat-card-title>
+      </mat-card-header>
+      <br>
+       <button mat-raised-button color="warn" type="button" (click)="annulerSuivie()" *ngIf="suivie.commerciauxListASuivre.length > 0"><mat-icon>cancel</mat-icon> 	&nbsp; decocher</button>
+
+      <div style="display: block" class="container" *ngIf="suivie.commerciauxpraincipaux.length != undefined">
+
+        <section class="example-section" *ngFor="let commercial of this.suivie.commerciauxpraincipaux">
+          <span class="example-list-section">
+            <mat-checkbox class="example-margin"
+                          [checked]="!commercial.status"
+                          color="primary"
+                          (change)="setAll(commercial)">
+              {{commercial.nom}}
+            </mat-checkbox>
+          </span>
+       </section>
+      </div>
+    </mat-card>
+  </div>
+</div>
